@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RCTBridge.h"
-#import "RCTBridgeModule.h"
-#import "RCTViewManager.h"
+#import <React/RCTBridge.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
 
 
 @interface RCT_EXTERN_MODULE(AirPlayButton, RCTViewManager)

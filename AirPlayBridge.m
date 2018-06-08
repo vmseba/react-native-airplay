@@ -6,9 +6,9 @@
 //  Copyright © 2016 Facebook. All rights reserved.
 //
 
-#import "RCTBridgeModule.h"
-#import "RCTEventDispatcher.h"
-#import "RCTViewManager.h"
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTViewManager.h>
 
 
 
