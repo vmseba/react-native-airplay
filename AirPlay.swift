@@ -18,11 +18,11 @@ class AirPlay: NSObject {
   
   @objc func startScan() -> Void {
     print("init airplay");
-    //self.bridge.eventDispatcher().sendDeviceEventWithName("AirPlayChanged", body: ["value": true])
-    NSNotificationCenter.defaultCenter().addObserver(
+    
+    NotificationCenter.default.addObserver(
       self,
-      selector: #selector(AirPlay.airplayChanged(_:)),
-      name: AVAudioSessionRouteChangeNotification,
+      selector: #selector(AirPlay.airplayChanged(sender:)),
+      name: NSNotification.Name.AVAudioSessionRouteChange,
       object: AVAudioSession.sharedInstance())
   }
   
@@ -37,7 +37,7 @@ class AirPlay: NSObject {
       }
     }
     
-    self.bridge.eventDispatcher().sendDeviceEventWithName("airplayConnected", body: ["connected": isAirPlayPlaying])
+    self.bridge.eventDispatcher().sendDeviceEvent(withName: "airplayConnected", body: ["connected": isAirPlayPlaying])
   }
   
   @objc func isAlredyConnected(callback: RCTResponseSenderBlock) -> Void {
@@ -57,8 +57,8 @@ class AirPlay: NSObject {
 @objc(AirPlayButton)
 class AirPlayButton: RCTViewManager {
   override func view() -> UIView! {
-    let wrapperView = UIView(frame: CGRectMake(0, 0, 40, 40))
-    wrapperView.backgroundColor = UIColor.redColor()
+    let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    wrapperView.backgroundColor = UIColor.red
     wrapperView.translatesAutoresizingMaskIntoConstraints = false
     
     let volumneView = MPVolumeView(frame: wrapperView.bounds)
