@@ -58,7 +58,7 @@ class AirPlay: NSObject {
 class AirPlayButton: RCTViewManager {
   override func view() -> UIView! {
     let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-    wrapperView.backgroundColor = UIColor.red
+    wrapperView.backgroundColor = UIColor.clear
     wrapperView.translatesAutoresizingMaskIntoConstraints = false
     
     let volumneView = MPVolumeView(frame: wrapperView.bounds)
