@@ -22,15 +22,15 @@ class AirPlay: NSObject {
     NotificationCenter.default.addObserver(
       self,
       selector: #selector(AirPlay.airplayChanged(sender:)),
-      name: NSNotification.Name.AVAudioSessionRouteChange,
+      name: AVAudioSession.routeChangeNotification,
       object: AVAudioSession.sharedInstance())
   }
   
-  func airplayChanged(sender: NSNotification) {
+  @objc func airplayChanged(sender: NSNotification) {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     var isAirPlayPlaying = false
     for output in currentRoute.outputs {
-      if output.portType == AVAudioSessionPortAirPlay {
+      if output.portType == AVAudioSession.Port.airPlay {
         print("Airplay Device connected with name: \(output.portName)")
         isAirPlayPlaying = true
         break;
@@ -43,7 +43,7 @@ class AirPlay: NSObject {
   @objc func isAlredyConnected(callback: RCTResponseSenderBlock) -> Void {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     for output in currentRoute.outputs {
-      if output.portType == AVAudioSessionPortAirPlay {
+      if output.portType == AVAudioSession.Port.airPlay {
         print("Airplay Device connected with name: \(output.portName)")
         callback([true])
         //return true
