@@ -14,6 +14,10 @@
 
 @interface RCT_EXTERN_MODULE(AirPlay, NSObject)
 
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
 RCT_EXTERN_METHOD(startScan)
 RCT_EXTERN_METHOD(isAlredyConnected:(RCTResponseSenderBlock)callback)
 
