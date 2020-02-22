@@ -14,4 +14,9 @@
 
 @interface RCT_EXTERN_MODULE(AirPlayButton, RCTViewManager)
 
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
+
 @end
