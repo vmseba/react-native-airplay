@@ -15,6 +15,10 @@ import MediaPlayer
 class AirPlay: NSObject {
   
   var bridge: RCTBridge!
+
+  override public static func requiresMainQueueSetup() -> Bool {
+    return false;
+  }
   
   @objc func startScan() -> Void {
     print("init airplay");
