@@ -16,7 +16,7 @@ class AirPlay: NSObject {
   
   var bridge: RCTBridge!
 
-  override public static func requiresMainQueueSetup() -> Bool {
+  public static func requiresMainQueueSetup() -> Bool {
     return false;
   }
   
